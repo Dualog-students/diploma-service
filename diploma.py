@@ -40,6 +40,6 @@ def generate_diploma(template_name, **fields):
         t.fields[k].value = v
 
     if not t.valid:
-        raise KeyError(f"Missing fields: {', '.join(t.missing)}")
+        raise ValueError(','.join(t.missing))
 
     return create_diploma_image(t)
