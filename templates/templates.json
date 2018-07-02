@@ -1,71 +1,64 @@
 [{
-    "ResourcePath": "employee.png",
-    "TemplateName": "Employee",
-    "Fields": [{
-      "Name": "Name",
-      "XOffset": 0.25,
-      "YOffset": 0.25,
-      "Height": 0.15,
-      "Width": 0.5,
-      "Color": "black"
+    "path": "employee.png",
+    "name": "Employee",
+    "fields": [{
+      "name": "Name",
+      "x": 0.25,
+      "y": 0.25,
+      "h": 0.15,
+      "w": 0.5,
+      "color": "black"
     }, {
-      "Name": "Date",
-      "XOffset": 0.12,
-      "YOffset": 0.72,
-      "Height": 0.06,
-      "Width": 0.34,
-      "Color": "black"
+      "name": "Date",
+      "x": 0.12,
+      "y": 0.715,
+      "h": 0.06,
+      "w": 0.34,
+      "color": "black"
     }, {
-      "Name": "Boss",
-      "XOffset": 0.54,
-      "YOffset": 0.80,
-      "Height": 0.06,
-      "Width": 0.34,
-      "Color": "black"
-    }],
-    "Signature": {
-      "XOffset": 0.6,
-      "YOffset": 0.7,
-      "Height": 0.1,
-      "Width": 0.25,
-      "Color": "#ffffff"
-    }
+      "name": "Boss",
+      "x": 0.53,
+      "y": 0.78,
+      "h": 0.065,
+      "w": 0.18,
+      "color": "black"
+    }]
   }, {
-    "ResourcePath": "student.png",
-    "TemplateName": "Student",
-    "Fields": [{
-      "Name": "Name",
-      "XOffset": 0.25,
-      "YOffset": 0.33,
-      "Height": 0.15,
-      "Width": 0.5,
-      "Color": "black"
+    "path": "student.png",
+    "name": "Student",
+    "fields": [{
+      "name": "Name",
+      "x": 0.25,
+      "y": 0.33,
+      "h": 0.15,
+      "w": 0.5,
+      "color": "black"
     }, {
-      "Name": "Helped with",
-      "XOffset": 0.71,
-      "YOffset": 0.585,
-      "Height": 0.045,
-      "Width": 0.125,
-      "Color": "white"
+      "name": "Helped with",
+      "x": 0.71,
+      "y": 0.585,
+      "h": 0.045,
+      "w": 0.125,
+      "color": "white"
     }, {
-      "Name": "Teacher name",
-      "XOffset": 0.33,
-      "YOffset": 0.8,
-      "Height": 0.075,
-      "Width": 0.33,
-      "Color": "white"
+      "name": "Teacher name",
+      "x": 0.33,
+      "y": 0.8,
+      "h": 0.075,
+      "w": 0.33,
+      "color": "white"
     }]
   },
   {
-    "ResourcePath": "good_effort.png",
-    "TemplateName": "Good effort",
-    "Fields": [{
-      "Name": "Name",
-      "XOffset": 0.45,
-      "YOffset": 0.4,
-      "Height": 0.2,
-      "Width": 0.4,
-      "Color": "#fff"
+    "path": "good_effort.png",
+    "name": "Good effort",
+    "fields": [{
+      "name": "Name",
+      "x": 0.45,
+      "y": 0.4,
+      "h": 0.2,
+      "w": 0.4,
+      "color": "white"
     }]
   }
 ]

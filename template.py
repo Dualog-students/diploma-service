@@ -1,9 +1,9 @@
 from json import loads
-from os import path
+import os
 
 
 class Field(object):
-    def __init__(self, color, x, y, w, h):
+    def __init__(self, name, color, x, y, w, h):
         self.color = color
         self.value = ""
         self.x = x
@@ -13,25 +13,19 @@ class Field(object):
 
     @classmethod
     def fromdict(cls, field_dict):
-        return cls(
-            field_dict['Color'],
-            field_dict['XOffset'],
-            field_dict['YOffset'],
-            field_dict['Width'],
-            field_dict['Height'])
+        return cls(**field_dict)
 
     def copy(self):
-        return self.__class__(self.color, self.x, self.y, self.w, self.h)
+        return self.__class__(None, self.color, self.x, self.y, self.w, self.h)
 
 
 class Template(object):
-    def __init__(self, template_dict, dirpath=''):
-        self.name = template_dict['TemplateName']
-        self.path = path.join(dirpath, template_dict['ResourcePath'])
+    def __init__(self, name, path, fields, dirpath=''):
+        self.name = name
+        self.path = os.path.join(dirpath, path)
         self.fields = {
-            field_dict['Name'].lower(): Field.fromdict(field_dict)
-            for field_dict
-            in template_dict['Fields']
+            field_dict['name'].lower(): Field.fromdict(field_dict)
+            for field_dict in fields
         }
 
     @property
@@ -46,18 +40,23 @@ class Template(object):
     def copy(self):
         return self.__class__(self.name, self.path, [f.copy() for f in self.fields])
 
+    @classmethod
+    def from_dict(cls, template_dict, dirpath=''):
+        template_dict['dirpath'] = dirpath
+        return cls(**template_dict)
+
 
 def import_templates(filename):
     with open(filename) as infile:
         dicts = loads(infile.read())
 
-    directory_name = path.dirname(filename)
+    directory_name = os.path.dirname(filename)
 
-    return {template_dict['TemplateName'].lower(): Template(template_dict, dirpath=directory_name)
+    return {template_dict['name'].lower(): Template.from_dict(template_dict, dirpath=directory_name)
             for template_dict in dicts}
 
 
 def valid_template_names():
     return [k for k, v
             in import_templates('templates/templates.json').items()
-            if path.isfile(v.path)]
+            if os.path.isfile(v.path)]
