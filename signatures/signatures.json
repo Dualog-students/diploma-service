@@ -1,20 +1,16 @@
 [{
-  "name": "Gavin Belson",
-  "path": "gavinbelson.png",
-  "description": "Visionary behind 'The Box 3'"
+  "id": "gavinbelson",
+  "name": "Gavin Belson"
 },
 {
-  "name": "Walt Disney",
-  "path": "waltdisney.png",
-  "description": "Old-timey nazi sympathizer"
+  "id": "waltdisney",
+  "name": "Walt Disney"
 },
 {
-  "name": "Donald Trump",
-  "path": "donaldtrump.png",
-  "description": "Nazi sympathizer"
+  "id": "donaldtrump",
+  "name": "Donald Trump"
 },
 {
-  "name": "Harry Potter",
-  "path": "harrypotter.png",
-  "description": "The boy who lived"
+  "id": "harrypotter",
+  "name": "Harry Potter"
 }]

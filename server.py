@@ -1,11 +1,14 @@
 from io import BytesIO
 from flask import Flask, send_file, request
 from json import dumps
-from diploma import generate_diploma, UnknownFields, MissingFields, preview_template, preview_signature
-from template import valid_template_names, BadSignature
+from diploma import generate_diploma, UnknownFields, \
+    MissingFields, preview_template, preview_signature
+from template import import_templates, BadSignature, \
+    frontend_templates_as_json, frontend_signatures_as_json
 import os
 
 app = Flask(__name__)
+
 
 def get_size(width, height):
     if not (width or height):
@@ -32,7 +35,12 @@ def serve_image(diploma_image):
 
 @app.route('/<data>.json')
 def serve_json_file(data):
-    return send_file(f"{data}/{data}.json")
+    if data == "templates":
+        return frontend_templates_as_json()
+    elif data == "signatures":
+        return frontend_signatures_as_json()
+
+    return my404('not found')
 
 
 @app.route('/preview/<filename>')
@@ -43,9 +51,9 @@ def serve_preview_image(filename):
 
     signature = f"signatures/{filename}.png"
 
-    if filename in valid_template_names():
+    if filename in import_templates():
         return serve_image(preview_template(filename, size))
-    elif os.path.exists(signature):
+    if os.path.exists(signature):
         return serve_image(preview_signature(signature, size))
     else:
         return my404('whoops')
@@ -54,8 +62,6 @@ def serve_preview_image(filename):
 @app.route('/<template_name>')
 def serve_diploma(template_name):
     template_name = template_name.lower()
-    if template_name not in valid_template_names():
-        return my404('whoops')
 
     kwargs = {k: ' '.join(v) for k, v in dict(request.args).items()}
     finished_diploma = generate_diploma(template_name, **kwargs)

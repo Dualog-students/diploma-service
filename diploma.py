@@ -78,7 +78,7 @@ def create_diploma_image(template):
     for name, field in template.fields.items():
         draw_centered_full_size(context, base_template.size, field)
 
-    if template.signature is not None:
+    if template.signature and template.signature.value:
         draw_scaled_signature(text, base_template.size, template.signature)
 
     return Image.alpha_composite(base_template, text)
@@ -109,7 +109,7 @@ def create_signature_preview(signature, size):
 
 
 def generate_diploma(template_name, **fields):
-    t = import_templates('templates/templates.json')[template_name]
+    t = import_templates()[template_name]
 
     path = fields.pop('signature', None)
     if path and t.signature is not None:
@@ -125,7 +125,7 @@ def generate_diploma(template_name, **fields):
 
 
 def preview_template(template_name, size):
-    template = import_templates('templates/templates.json')[template_name]
+    template = import_templates()[template_name]
     return create_template_preview(template, size)
 
 
