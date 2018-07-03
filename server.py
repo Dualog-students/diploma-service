@@ -62,6 +62,14 @@ def serve_diploma(template_name):
     return serve_image(finished_diploma)
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_file(
+        'favicon.ico',
+        mimetype='image/vnd.microsoft.icon'
+    )
+
+
 @app.errorhandler(BadSignature)
 def bad_signature(error):
     payload = dumps({"bad_signature": str(error)})
