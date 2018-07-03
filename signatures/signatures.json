@@ -1,0 +1,20 @@
+[{
+  "name": "Gavin Belson",
+  "path": "gavinbelson.png",
+  "description": "Visionary behind 'The Box 3'"
+},
+{
+  "name": "Walt Disney",
+  "path": "waltdisney.png",
+  "description": "Old-timey nazi sympathizer"
+},
+{
+  "name": "Donald Trump",
+  "path": "donaldtrump.png",
+  "description": "Nazi sympathizer"
+},
+{
+  "name": "Harry Potter",
+  "path": "harrypotter.png",
+  "description": "The boy who lived"
+}]

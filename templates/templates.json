@@ -22,7 +22,16 @@
       "h": 0.065,
       "w": 0.18,
       "color": "black"
-    }]
+    }],
+    "signature": {
+      "name": "signature",
+      "x": 0.6,
+      "y": 0.675,
+      "h": 0.1,
+      "w": 0.20,
+      "color": "black"
+    }
+
   }, {
     "path": "student.png",
     "name": "Student",
