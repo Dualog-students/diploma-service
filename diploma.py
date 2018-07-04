@@ -70,7 +70,7 @@ def draw_centered_full_size(context, size, field):
     font size that won't overflow its bounding box."""
     text = field.value
     rect = get_rect(field, size)
-    font = get_font_that_fits_in_box(text, rect[:2])
+    font = get_font_that_fits_in_box(text, rect)
     center = center_text_in_rect(font.getsize(text), rect)
     context.text(center, field.value, font=font, fill=ImageColor.getrgb(field.color))
 
@@ -79,12 +79,13 @@ def draw_scaled_signature(image, signature):
     """Draws the signature field onto the image.
     The signature will be scaled to fit into its area
     while preserving its aspect ratio."""
-    rect = get_rect(signature, image.size)
+    x1, y1, x2, y2 = get_rect(signature, image.size)
+    size = x2 - x1, y2 - y1
     signature = Image \
         .open(signature.value) \
         .convert('RGBA')
-    signature.thumbnail(rect[:2])
-    image.paste(signature, box=rect[:2])
+    signature.thumbnail(size)
+    image.paste(signature, box=(x1, y1))
 
 
 def create_diploma_image(template):

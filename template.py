@@ -110,7 +110,7 @@ def create_clean_template(template_dict):
     cleaned.pop('path', None)
     signature = cleaned.pop('signature', False)
     field_dicts = cleaned['fields']
-    cleaned['fields'] = list(field_dicts.keys())
+    cleaned['fields'] = [{'name': k} for k in field_dicts]
     cleaned['signature'] = bool(signature)
     return cleaned
 
