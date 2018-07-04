@@ -10,7 +10,10 @@ import os
 app = Flask(__name__)
 
 
-def get_size(width, height):
+def get_size_from_query_params():
+    width = request.args.get('width', None)
+    height = request.args.get('height', None)
+
     if not (width or height):
         size = None
     elif not width and height:
@@ -36,27 +39,26 @@ def serve_image(diploma_image):
 @app.route('/<data>.json')
 def serve_json_file(data):
     if data == "templates":
-        return frontend_templates_as_json()
+        payload = frontend_templates_as_json()
     elif data == "signatures":
-        return frontend_signatures_as_json()
-
-    return my404('not found')
-
-
-@app.route('/preview/<filename>')
-def serve_preview_image(filename):
-    width = request.args.get('width', None)
-    height = request.args.get('height', None)
-    size = get_size(width, height)
-
-    signature = f"signatures/{filename}.png"
-
-    if filename in import_templates():
-        return serve_image(preview_template(filename, size))
-    if os.path.exists(signature):
-        return serve_image(preview_signature(signature, size))
+        payload = frontend_signatures_as_json()
     else:
-        return my404('whoops')
+        return my404('not found')
+
+    return (payload, 200, {"content-type": "application/json"})
+
+
+@app.route('/preview/signature/<filename>')
+def serve_signature_preview(filename):
+    signature_path = f"signatures/{filename}.png"
+    size = get_size_from_query_params()
+    return serve_image(preview_signature(signature_path, size))
+
+
+@app.route('/preview/template/<filename>')
+def serve_preview_image(filename):
+    size = get_size_from_query_params()
+    return serve_image(preview_template(filename, size))
 
 
 @app.route('/<template_name>')
