@@ -127,16 +127,14 @@ def create_template_preview(template, size=None):
 
 
 def create_signature_preview(signature, size):
-    """Creates a preview version of the signature. The signature is overlaid
-    onto a white background because we assume the lines will be colored.
+    """Creates a preview version of the signature.
     If the size argument is provided the it is used to constrain
     the size of the image while preserving aspect ratio.
     """
     base_signature = Image.open(signature).convert('RGBA')
     if size:
         base_signature.thumbnail(size)
-    background = Image.new('RGBA', base_signature.size, (255, 255, 255, 255))
-    return Image.alpha_composite(background, base_signature)
+    return base_signature
 
 
 def generate_diploma(template_name, **fields):
