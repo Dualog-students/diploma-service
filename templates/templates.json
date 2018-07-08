@@ -1,64 +1,73 @@
-[{
+{
+  "Employee": {
     "path": "employee.png",
-    "name": "Employee",
-    "fields": [{
-      "name": "Name",
-      "x": 0.25,
-      "y": 0.25,
-      "h": 0.15,
-      "w": 0.5,
-      "color": "black"
-    }, {
-      "name": "Date",
-      "x": 0.12,
-      "y": 0.715,
-      "h": 0.06,
-      "w": 0.34,
-      "color": "black"
-    }, {
-      "name": "Boss",
-      "x": 0.53,
-      "y": 0.78,
-      "h": 0.065,
-      "w": 0.18,
-      "color": "black"
-    }]
-  }, {
-    "path": "student.png",
-    "name": "Student",
-    "fields": [{
-      "name": "Name",
-      "x": 0.25,
-      "y": 0.33,
-      "h": 0.15,
-      "w": 0.5,
-      "color": "black"
-    }, {
-      "name": "Helped with",
-      "x": 0.71,
-      "y": 0.585,
-      "h": 0.045,
-      "w": 0.125,
-      "color": "white"
-    }, {
-      "name": "Teacher name",
-      "x": 0.33,
-      "y": 0.8,
-      "h": 0.075,
-      "w": 0.33,
-      "color": "white"
-    }]
+    "fields": {
+      "Name": {
+        "color": "black",
+        "x": 0.25,
+        "y": 0.25,
+        "w": 0.5,
+        "h": 0.15
+      },
+      "Date": {
+        "color": "black",
+        "x": 0.12,
+        "y": 0.715,
+        "w": 0.34,
+        "h": 0.06
+      },
+      "Boss": {
+        "color": "black",
+        "x": 0.53,
+        "y": 0.78,
+        "w": 0.18,
+        "h": 0.065
+      }
+    },
+    "signature": {
+      "color": "black",
+      "x": 0.6,
+      "y": 0.675,
+      "w": 0.20,
+      "h": 0.1
+    }
   },
-  {
+  "Student": {
+    "path": "student.png",
+    "fields": {
+      "Name": {
+        "color": "black",
+        "x": 0.25,
+        "y": 0.33,
+        "w": 0.5,
+        "h": 0.15
+      },
+      "Subject": {
+        "color": "white",
+        "x": 0.71,
+        "y": 0.585,
+        "w": 0.125,
+        "h": 0.045
+      },
+      "Teacher": {
+        "color": "white",
+        "x": 0.33,
+        "y": 0.8,
+        "w": 0.33,
+        "h": 0.075
+      }
+    }
+  },
+  "Good effort": {
     "path": "good_effort.png",
-    "name": "Good effort",
-    "fields": [{
-      "name": "Name",
-      "x": 0.45,
-      "y": 0.4,
-      "h": 0.2,
-      "w": 0.4,
-      "color": "white"
-    }]
+    "fields": {
+      "Name": {
+        "color": "white",
+        "x": 0.45,
+        "y": 0.4,
+        "w": 0.4,
+        "h": 0.2
+      }
+    }
   }
-]
+}
